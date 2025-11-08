@@ -1,0 +1,44 @@
+% Example New Version
+
+fof(puro_rhs_model, axiom,
+(
+    % === Entities and Their PURO Categories ===
+    bookstore_prague : bobject &
+    _someObjects1    : bobject &
+    the_little_prince : btype1 &
+    book             : btype2 &
+    price            : btypea &
+
+    % === B-Instantiations Using the Abbreviation x :B T ===
+    b_type(_someObjects1, b, the_little_prince) &
+    b_type(_someObjects1, b, someObjects) &
+    b_type(the_little_prince, b, book) &
+    b_type(bookstore_prague, b, bookstore) &
+
+    % === The Offers Relation ===
+    offers : brelation &
+    relRole(_offersRole1) &
+    relRole(what) &
+    _offersRole1 != what &
+
+    % === An Instance of the Offers B-Relationship ===
+    _offers1 : brelationship &
+    b_type(_offers1, b, offers) &
+    hasParticipant(_offers1, _offersRole1, bookstore_prague) &
+    hasParticipant(_offers1, what, _someObjects1) &
+
+    % === B-Attributes and Valuations ===
+    quantity : battribute &
+    _quantity1 : bvaluation &
+    b_type(_quantity1, b, quantity) &
+    hasValuation(_someObjects1, _quantity1) &
+    hasValue(_quantity1, 10) &
+
+    unit_price : battribute &
+    b_type(unit_price, b, price) &
+    _unit_price1 : bvaluation &
+    b_type(_unit_price1, b, unit_price) &
+    hasValuation(_offers1, _unit_price1) &
+    hasValue(_unit_price1, 300)
+)).
+
